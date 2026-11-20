@@ -156,50 +156,6 @@ See [SPEC.md](SPEC.md) for the API endpoints, scan budget, formulas, and fallbac
   request; Svelte escaping; no `{@html}`; and a restricted CSP. Inline positioning styles
   on the table tooltips are the one reason `style-src` includes `'unsafe-inline'`.
 
-## Feature status
-
-As of 2026-11-15:
-
-| Feature | Status |
-|---|---|
-| Shareable screens (URL + **Share** dialog) | Done |
-| Active filter summary and one **Reset filters** control | Done; shows the whole configuration, including defaults |
-| Data and API status menu | Done, with the last refreshed time beside the status badge |
-| Universe chips, global ticker search scope, sector in the filter panel | Done |
-| Custom stock lists | Done, including JSON export/import; saved lists are visually separate and the note lists every ticker |
-| Key onboarding, session/saved badge and safe removal | Done |
-| Filter info tips, collapsible Fine-tune, prominent price-bucket note | Done |
-| Results count split into matches and scanned totals | Done |
-| Buy Me a Coffee header link, About QR code, no widget | Done |
-| Client-side pagination with all matches reachable | Done |
-| Accessible counts, scan progress, larger targets, Escape-dismissable tooltips | Done |
-| Local screening presets | **Not started** |
-| Table customisation (show/hide, reorder columns) | **Not started** |
-
-Risk profiles and expiration buckets are **filter presets**, not saved screens. A saved
-screen would capture the universe, search, sector, strategy, risk, expiration, price
-bucket, fine-tune values, exclusions and sort.
-
-## Roadmap
-
-**Planned next:**
-
-- **Local screening presets** — save, load, rename, duplicate and delete named screens in
-  `localStorage`, with a versioned JSON export/import format.
-- **Table customisation** — show/hide and reorder columns, saved layouts, and Income /
-  Risk / Overview presentation presets.
-
-**Ideas — not currently planned:**
-
-- Full-market chain scan with better handling of Alpaca's rate limit and a candidate cache.
-- Open interest (opt-in only; see [Known limitations](#known-limitations)).
-- CSV export, per-symbol refresh, yield-threshold alerts.
-- Paper-trade integration for placing a wheel leg from a row.
-- IV rank, dividend capture notes, earnings confidence from IV bumps.
-- QR codes for shared screens, multiple screening tabs, local screening history,
-  printable reports.
-- Better pagination progress and a service worker for an offline shell.
-
 ## Known limitations
 
 - **No full-market chain scan** — US Options scans one price bucket per refresh and stops
