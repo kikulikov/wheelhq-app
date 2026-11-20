@@ -1,0 +1,303 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes:
+    emerald --default,
+    night --prefersdark;
+}
+@source './**/*.{svelte,ts}';
+
+:root {
+  --filter-accent: var(--color-primary);
+  --event-dividend: #c2410c;
+  --event-earnings: #b91c1c;
+  --event-mark-text: #fff;
+}
+
+:root[data-theme='night'] {
+  --event-dividend: #fb923c;
+  --event-earnings: #f87171;
+  --event-mark-text: #1d232a;
+}
+
+/* DaisyUI's placeholder and link colours fall below 4.5:1 on light surfaces. */
+input::placeholder,
+textarea::placeholder {
+  color: color-mix(in oklab, var(--color-base-content) 72%, transparent);
+}
+
+.link-primary {
+  color: color-mix(in oklab, var(--color-primary) 45%, var(--color-base-content));
+}
+
+.badge-ghost {
+  color: color-mix(in oklab, var(--color-base-content) 80%, transparent);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  @apply bg-base-100 text-base-content antialiased;
+}
+
+.table-wrap {
+  @apply overflow-x-auto rounded-box border border-base-300 bg-base-100;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  width: max-content;
+  min-width: 100%;
+}
+
+th,
+td {
+  @apply border-b border-base-200 px-2 py-1.5 text-right whitespace-nowrap;
+}
+
+/* Keep the last column's digits clear of the table's overlay scrollbar. */
+th:last-child,
+td:last-child {
+  @apply pr-4;
+}
+
+th {
+  @apply sticky top-0 z-20 cursor-pointer bg-base-100 text-[0.6875rem] font-semibold tracking-wide text-base-content/70 uppercase select-none;
+}
+
+th:hover {
+  @apply text-base-content/80;
+}
+
+th button {
+  @apply flex w-full cursor-pointer items-center justify-end gap-1 border-0 bg-transparent p-0 text-inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+th.l button {
+  @apply justify-start;
+}
+
+th button:focus-visible {
+  @apply rounded-sm outline-2 outline-offset-2 outline-primary;
+}
+
+th.l,
+td.l {
+  text-align: left;
+}
+
+th:first-child,
+td:first-child {
+  @apply sticky left-0 z-10 bg-base-100;
+}
+
+th:first-child {
+  z-index: 30;
+}
+
+tr:hover td {
+  @apply bg-base-200;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.table-empty {
+  @apply sticky left-0 px-4 py-6 text-center text-sm text-base-content/70;
+  width: 100%;
+  white-space: normal;
+}
+
+.ticker {
+  @apply cursor-help border-b border-dotted border-transparent bg-transparent p-0 text-left font-[inherit] text-inherit;
+}
+
+.ticker:hover,
+.ticker:focus-visible {
+  @apply border-current;
+}
+
+.ticker:focus-visible {
+  @apply rounded-sm outline-2 outline-offset-2 outline-primary;
+}
+
+.ticker-cell {
+  @apply flex min-w-[132px] items-center justify-between gap-2.5;
+}
+
+.ticker-actions {
+  @apply ml-auto flex items-center gap-1.5;
+}
+
+.exclude-btn {
+  @apply relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border border-base-300 bg-base-100 text-[0.625rem] leading-none font-semibold text-base-content/40 transition;
+}
+
+/* Match the help "?" size, but keep a comfortable touch target. */
+.exclude-btn::after {
+  content: '';
+  position: absolute;
+  inset: -0.25rem;
+  border-radius: 9999px;
+}
+
+.exclude-btn:hover,
+.exclude-btn:focus-visible {
+  @apply border-error/60 text-error;
+}
+
+.exclude-btn:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
+
+.event-slot {
+  display: inline-flex;
+  width: 3.25rem;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+}
+
+.event-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background: var(--event-dividend);
+  color: var(--event-mark-text);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.event-mark.estimated {
+  background: transparent;
+  border-color: var(--event-dividend);
+  color: var(--color-base-content);
+}
+
+.event-mark.earn {
+  background: var(--event-earnings);
+}
+
+.event-mark.earn.estimated {
+  background: transparent;
+  border-color: var(--event-earnings);
+  color: var(--color-base-content);
+}
+
+.event-mark:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.marker-tip {
+  max-width: 20rem;
+}
+
+.tv-link {
+  @apply inline-flex size-5 shrink-0 items-center justify-center overflow-hidden rounded-full border border-base-300 bg-base-100;
+}
+
+.tv-link img {
+  @apply block size-4 rounded-full;
+}
+
+.tv-link:hover {
+  @apply border-primary;
+}
+
+.tv-link:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
+
+.ticker-tip {
+  @apply pointer-events-none fixed z-50 max-w-[18rem] rounded-box border border-base-300 bg-base-100 px-3 py-2 text-xs shadow-xl;
+}
+
+.tip-name {
+  @apply font-semibold;
+}
+
+.tip-exchange {
+  @apply mt-0.5 text-[0.625rem] tracking-wide text-base-content/70 uppercase;
+}
+
+.tip-figures {
+  @apply mt-1.5 flex items-baseline gap-2 tabular-nums;
+}
+
+.tip-contract {
+  @apply mt-1.5 border-t border-base-200 pt-1.5 font-mono text-[0.6875rem] tracking-tight text-base-content/80;
+}
+
+.tip-hint {
+  @apply mt-0.5 text-[0.6875rem] text-base-content/70;
+}
+
+.strike-requirement {
+  @apply text-[0.6875rem] leading-tight text-base-content/70 tabular-nums;
+}
+
+.tip-price {
+  @apply font-bold;
+}
+
+:root[data-strategy='csp'] {
+  --filter-accent: var(--color-primary);
+}
+
+:root[data-strategy='cc'] {
+  --filter-accent: var(--color-secondary);
+}
+
+.strategy-range {
+  background-color: var(--filter-accent);
+}
+
+.strategy-thumb {
+  border-color: var(--filter-accent);
+}
+
+.strategy-thumb:focus-visible {
+  outline: 2px solid var(--filter-accent);
+  outline-offset: 2px;
+}
+
+.good {
+  @apply font-semibold text-success;
+}
+
+.bad {
+  @apply text-error;
+}
+
+.range-value {
+  @apply text-xs text-base-content/70 tabular-nums;
+}
+
+dialog.modal::backdrop {
+  background: rgb(0 0 0 / 0.45);
+}
+
+dialog.modal .modal-box {
+  @apply max-h-[calc(100vh-2rem)];
+}

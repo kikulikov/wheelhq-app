@@ -1,0 +1,9 @@
+dist
+node_modules
+package-lock.json
+.superpowers
+*.md
+*.har
+
+static/robots.txt
+static/sitemap.xml

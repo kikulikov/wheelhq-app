@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About WheelHQ - Options Screener</title>
+    <meta
+      name="description"
+      content="Learn how WheelHQ screens S&P 500 and Nasdaq-100 options with your own Alpaca key, and why there is no account, profile or server-side data."
+    />
+    <meta name="application-name" content="WheelHQ" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://wheelhq.xyz/about/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="WheelHQ" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="About WheelHQ - Options Screener" />
+    <meta
+      property="og:description"
+      content="Learn how WheelHQ screens S&P 500 and Nasdaq-100 options with your own Alpaca key, and why there is no account, profile or server-side data."
+    />
+    <meta property="og:url" content="https://wheelhq.xyz/about/" />
+    <meta property="og:image" content="https://wheelhq.xyz/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="WheelHQ covered call and cash-secured put screener" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About WheelHQ - Options Screener" />
+    <meta
+      name="twitter:description"
+      content="Learn how WheelHQ screens S&P 500 and Nasdaq-100 options with your own Alpaca key, and why there is no account, profile or server-side data."
+    />
+    <meta name="twitter:image" content="https://wheelhq.xyz/og-image.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About WheelHQ",
+        "url": "https://wheelhq.xyz/about/",
+        "description": "Learn how WheelHQ screens S&P 500 and Nasdaq-100 options with your own Alpaca key, and why there is no account, profile or server-side data.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "WheelHQ",
+          "url": "https://wheelhq.xyz/"
+        },
+        "mainEntity": {
+          "@type": "WebApplication",
+          "name": "WheelHQ",
+          "url": "https://wheelhq.xyz/",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/about/about.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/">← Back to the screener</a>
+      <h1>About WheelHQ</h1>
+      <p class="tagline">
+        Covered call and cash-secured put screener for S&P 500 and Nasdaq-100 stocks. Runs in your
+        browser. No account, no profile.
+      </p>
+
+      <section>
+        <h2>What WheelHQ does</h2>
+        <p>
+          WheelHQ screens cash-secured puts and covered calls across the S&P 500 and Nasdaq-100.
+          Filter by sector, yield, annualized return, delta, DTE, spread and price bucket; the table
+          updates in your browser. Earnings and ex-dividend dates before expiry are marked in the
+          expiry column.
+        </p>
+      </section>
+
+      <section>
+        <h2>How the screen works</h2>
+        <p>
+          WheelHQ reads market data from Alpaca. It asks for stock snapshots for the selected
+          universe, orders candidates by last completed session dollar volume, and fetches option
+          chains for the expiry and strike window you choose. Delta and the other filters are
+          applied in the browser, so ordinary screening does not send every filter change back to
+          the data provider.
+        </p>
+        <p>
+          Free Alpaca keys use the delayed <code>indicative</code> feed; real-time OPRA data needs
+          an options data subscription. A scan can stop early when Alpaca’s rate limit is reached,
+          and custom lists screen their own names.
+        </p>
+      </section>
+
+      <section id="keys">
+        <h2>Your Alpaca key</h2>
+        <p>
+          WheelHQ has no market-data service or account of its own. You connect your own Alpaca API
+          key so the browser can read option chains and stock prices directly from Alpaca. The key
+          is stored in this browser: session-only by default, or in local storage only when you tick
+          <strong>Keep this key on this device</strong>. It is sent only to
+          <code>*.alpaca.markets</code>
+          and is never sent to WheelHQ. You can remove it at any time from Data and API status.
+        </p>
+        <p>
+          Prefer a paper-trading key. A live key can place trades if it leaks. A market-data-only
+          key is enough for screening; options data access decides whether quotes are delayed or
+          real-time. WheelHQ never places trades.
+        </p>
+      </section>
+
+      <section>
+        <h2>No account, no profile</h2>
+        <p>
+          There is no sign-up, no profile page and no user database. WheelHQ is a static site:
+          screening, calculations and preferences happen in your browser. Nothing about your screen
+          is stored on a WheelHQ server.
+        </p>
+      </section>
+
+      <section>
+        <h2>Data and privacy</h2>
+        <p>
+          Market data comes from Alpaca. Your key stays in your browser and goes only to Alpaca.
+          WheelHQ does not place trades. Production analytics are cookieless and never receive your
+          key, tickers or filter values.
+        </p>
+      </section>
+
+      <section class="support">
+        <h2>Support WheelHQ</h2>
+        <p>WheelHQ is free. If it saves you time, you can buy me a coffee.</p>
+        <figure class="support-qr">
+          <img
+            src="/about/bmc-qr.png"
+            alt="QR code for the WheelHQ Buy Me a Coffee page"
+            width="160"
+            height="160"
+            loading="lazy"
+          />
+          <figcaption>Scan to open the Buy Me a Coffee page.</figcaption>
+        </figure>
+        <p>
+          <a href="https://buymeacoffee.com/wheelhq" rel="noopener noreferrer"
+            >buymeacoffee.com/wheelhq</a
+          >
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Questions, bugs or feedback:
+          <a href="mailto:hello@wheelhq.xyz">hello@wheelhq.xyz</a>.
+        </p>
+      </section>
+
+      <p class="disclaimer">Market data may be delayed. Nothing on WheelHQ is investment advice.</p>
+    </main>
+
+    <footer>
+      <span>© 2026 WheelHQ</span>
+      <a href="mailto:hello@wheelhq.xyz">hello@wheelhq.xyz</a>
+      <a href="/">Back to the screener</a>
+    </footer>
+    <script src="/about/robots.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+# Render Blueprint for WheelHQ.
+# Service name: wheelhq-app; URL https://wheelhq-app.onrender.com/.
+# Custom domain: https://wheelhq.xyz/.
+# Static site: builds the Svelte/Vite app and publishes dist/ to Render's CDN.
+# Deploy: Render Dashboard → New → Blueprint → select this repo.
+services:
+  - type: web
+    name: wheelhq-app
+    runtime: static
+    domains:
+      - wheelhq.xyz
+    buildCommand: 'npm ci --include=dev && npm run build'
+    staticPublishPath: ./dist
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: NODE_VERSION
+        value: '22'
+      - key: VITE_ANALYTICS
+        value: '1'
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+      - path: /*
+        name: Content-Security-Policy
+        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://wheelhq.goatcounter.com; connect-src 'self' https://data.alpaca.markets https://paper-api.alpaca.markets https://api.alpaca.markets https://wheelhq-datasets.onrender.com https://datasets.wheelhq.xyz; base-uri 'none'; form-action 'self'; object-src 'none'; frame-ancestors 'self'"
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: 'camera=(), microphone=(), geolocation=()'

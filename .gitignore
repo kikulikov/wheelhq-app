@@ -1,0 +1,11 @@
+.env
+.env.*
+.DS_Store
+node_modules/
+dist/
+npm-debug.log*
+*.har
+.superpowers/
+playwright-report/
+test-results/
+blob-report/
